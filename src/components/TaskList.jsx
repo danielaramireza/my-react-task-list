@@ -1,14 +1,11 @@
-const TaskList = () => {
+import Task from "./Task";
+import TaskListObject from "../data";
+const TaskList = (props) => {
   return (
     <ul>
-      <li>
-        <div>
-          <input type="checkbox"></input>
-          <p>Tarea 1</p>
-          <button type="button">Editar</button>
-          <button type="button">Eliminar</button>
-        </div>
-      </li>
+      {TaskListObject.map((task) => (
+        <Task key={task.id} name={task.TaskName} state={task.State} />
+      ))}
     </ul>
   );
 };
