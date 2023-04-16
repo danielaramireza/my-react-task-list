@@ -1,11 +1,21 @@
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./components/Input";
 
 function App() {
-  const [listaDeTareas, setListaDeTareas] = useState([]);
+  const [listaDeTareas, setListaDeTareas] = useState(
+    localStorage.getItem("listaDeTareas")
+      ? JSON.parse(localStorage.getItem("listaDeTareas"))
+      : []
+  );
+
+  useEffect(() => {
+    console.log("La lista de tareas cambio");
+    console.log(listaDeTareas);
+    localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
+  }, [listaDeTareas]);
 
   function retornarUltimoId() {
     const ultimoId = listaDeTareas.reduce((max, objeto) => {
