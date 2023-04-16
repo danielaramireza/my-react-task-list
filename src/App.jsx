@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header titulo="Todo App" />
+      <Header titulo="ToDo App" />
       <Input agregarTarea={agregarTarea} />
       <TaskList
         listaDeTareas={listaDeTareas}

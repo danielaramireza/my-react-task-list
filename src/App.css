@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #175676;
 }
 
 .App {
@@ -12,6 +14,7 @@ body {
   border-radius: 8px;
   padding: 3rem;
   margin-top: 10px;
+  background-color: white;
 }
 
 .App h1 {
@@ -50,7 +53,7 @@ body {
 }
 
 .checkbox:checked {
-  background: #2acd72;
+  background: #175676;
   border: 1px solid white;
 }
 
@@ -70,9 +73,54 @@ body {
 }
 
 .task-edit-button {
-  color: #6ba0df;
+  color: #175676;
 }
 
 .task-delete-button {
   color: #e7494b;
+}
+
+.formularioNuevaTarea {
+  display: flex;
+  gap: 10px;
+}
+
+.formularioNuevaTarea input {
+  width: 100%;
+  height: 2rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding-left: 8px;
+}
+
+.formularioNuevaTarea button {
+  width: 36px;
+  background: #175676;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.botonCancelarModal {
+  background: #e7494b;
+  color: white;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+.botonGuardarModal {
+  color: white;
+  background-color: #175676;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0px 10px;
 }

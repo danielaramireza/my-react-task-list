@@ -15,11 +15,10 @@ export default function Input(props) {
     setNombreTarea("");
   }
   return (
-    <form onSubmit={enviarTarea}>
+    <form className="formularioNuevaTarea" onSubmit={enviarTarea}>
       <input
         type="text"
-        name=""
-        id=""
+        placeholder="Agregar nueva tarea"
         value={nombreTarea}
         onChange={(ev) => setNombreTarea(ev.target.value)}
       />

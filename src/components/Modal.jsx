@@ -25,6 +25,7 @@ export default function Modal(props) {
         <div className="modalBody">
           <form onSubmit={enviarActualizacionTarea}>
             <input
+              className="inputNombreTareaModal"
               type="text"
               placeholder="Nuevo nombre de la tarea"
               value={nuevoNombreTarea}
@@ -33,8 +34,15 @@ export default function Modal(props) {
           </form>
         </div>
         <div className="modalFooter">
-          <button onClick={() => cerrarModal()}>Cancelar</button>
-          <button onClick={enviarActualizacionTarea}>Guardar</button>
+          <button className="botonCancelarModal" onClick={() => cerrarModal()}>
+            Cancelar
+          </button>
+          <button
+            className="botonGuardarModal"
+            onClick={enviarActualizacionTarea}
+          >
+            Guardar
+          </button>
         </div>
       </div>
     </div>
