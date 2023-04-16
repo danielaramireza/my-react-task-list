@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const Task = (props) => {
-  const { name, state } = props;
+  const { id, name, state, eliminarTarea } = props;
   let classLine = "";
   if (state) {
     classLine = "classLine";
@@ -23,7 +23,11 @@ const Task = (props) => {
           <button className="task-edit-button" type="button">
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
-          <button className="task-delete-button" type="button">
+          <button
+            className="task-delete-button"
+            type="button"
+            onClick={() => eliminarTarea(id)}
+          >
             <FontAwesomeIcon icon={faTrashCan} />
           </button>
         </div>

@@ -12,14 +12,11 @@ function App() {
   );
 
   useEffect(() => {
-    console.log("La lista de tareas cambio");
-    console.log(listaDeTareas);
     localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
   }, [listaDeTareas]);
 
   function retornarUltimoId() {
     const ultimoId = listaDeTareas.reduce((max, objeto) => {
-      console.log(objeto);
       if (objeto.id > max) {
         return objeto.id;
       }
@@ -29,18 +26,22 @@ function App() {
   }
 
   function agregarTarea(nombreTarea) {
-    console.log(nombreTarea);
     setListaDeTareas([
       ...listaDeTareas,
       { id: retornarUltimoId(), TaskName: nombreTarea, State: false },
     ]);
   }
 
+  function eliminarTarea(id) {
+    const nuevaListaDeTareas = listaDeTareas.filter((tarea) => tarea.id != id);
+    setListaDeTareas(nuevaListaDeTareas);
+  }
+
   return (
     <div className="App">
       <Header titulo="Todo App" />
       <Input agregarTarea={agregarTarea} />
-      <TaskList listaDeTareas={listaDeTareas} />
+      <TaskList listaDeTareas={listaDeTareas} eliminarTarea={eliminarTarea} />
     </div>
   );
 }

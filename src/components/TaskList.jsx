@@ -1,12 +1,18 @@
 import Task from "./Task";
 
 const TaskList = (props) => {
-  const { listaDeTareas } = props;
+  const { listaDeTareas, eliminarTarea } = props;
 
   return (
     <ul>
       {listaDeTareas.map((tarea) => (
-        <Task key={tarea.id} name={tarea.TaskName} state={tarea.State} />
+        <Task
+          key={tarea.id}
+          id={tarea.id}
+          name={tarea.TaskName}
+          state={tarea.State}
+          eliminarTarea={eliminarTarea}
+        />
       ))}
     </ul>
   );
