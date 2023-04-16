@@ -47,6 +47,16 @@ function App() {
     setListaDeTareas(nuevaListaDeTareas);
   }
 
+  function actualizarTarea(id, name) {
+    const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
+      if (tarea.id == id) {
+        return { ...tarea, TaskName: name };
+      }
+      return tarea;
+    });
+    setListaDeTareas(nuevaListaDeTareas);
+  }
+
   return (
     <div className="App">
       <Header titulo="Todo App" />
@@ -55,6 +65,7 @@ function App() {
         listaDeTareas={listaDeTareas}
         eliminarTarea={eliminarTarea}
         cambiarEstadoTarea={cambiarEstadoTarea}
+        actualizarTarea={actualizarTarea}
       />
     </div>
   );

@@ -1,0 +1,26 @@
+.contenedorGris {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedorBlanco {
+  position: relative;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #888;
+  z-index: 99;
+}
+
+.botonCerrarModal {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}

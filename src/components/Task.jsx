@@ -1,12 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 const Task = (props) => {
-  const { id, name, state, eliminarTarea, cambiarEstadoTarea } = props;
+  const {
+    id,
+    name,
+    state,
+    eliminarTarea,
+    cambiarEstadoTarea,
+    actualizarTarea,
+  } = props;
 
   const [estadoTarea, setEstadoTarea] = useState(state);
   const [claseDelEstado, setClaseDelEstado] = useState();
+  const [estadoModal, setEstadoModal] = useState(false);
 
   useEffect(() => {
     if (estadoTarea == true) {
@@ -17,6 +26,10 @@ const Task = (props) => {
 
     cambiarEstadoTarea(id, estadoTarea);
   }, [estadoTarea]);
+
+  function cerrarModal() {
+    setEstadoModal(false);
+  }
 
   return (
     <li>
@@ -31,7 +44,11 @@ const Task = (props) => {
           <p className={claseDelEstado}>{name}</p>
         </div>
         <div className="task-right">
-          <button className="task-edit-button" type="button">
+          <button
+            className="task-edit-button"
+            type="button"
+            onClick={() => setEstadoModal(!estadoModal)}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
           <button
@@ -43,6 +60,15 @@ const Task = (props) => {
           </button>
         </div>
       </div>
+
+      {estadoModal && (
+        <Modal
+          cerrarModal={cerrarModal}
+          id={id}
+          name={name}
+          actualizarTarea={actualizarTarea}
+        />
+      )}
     </li>
   );
 };

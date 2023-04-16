@@ -1,7 +1,8 @@
 import Task from "./Task";
 
 const TaskList = (props) => {
-  const { listaDeTareas, eliminarTarea, cambiarEstadoTarea } = props;
+  const { listaDeTareas, eliminarTarea, cambiarEstadoTarea, actualizarTarea } =
+    props;
 
   return (
     <ul>
@@ -13,6 +14,7 @@ const TaskList = (props) => {
           state={tarea.State}
           eliminarTarea={eliminarTarea}
           cambiarEstadoTarea={cambiarEstadoTarea}
+          actualizarTarea={actualizarTarea}
         />
       ))}
     </ul>
