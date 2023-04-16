@@ -37,11 +37,25 @@ function App() {
     setListaDeTareas(nuevaListaDeTareas);
   }
 
+  function cambiarEstadoTarea(id, estadoTarea) {
+    const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
+      if (tarea.id == id) {
+        return { ...tarea, State: estadoTarea };
+      }
+      return tarea;
+    });
+    setListaDeTareas(nuevaListaDeTareas);
+  }
+
   return (
     <div className="App">
       <Header titulo="Todo App" />
       <Input agregarTarea={agregarTarea} />
-      <TaskList listaDeTareas={listaDeTareas} eliminarTarea={eliminarTarea} />
+      <TaskList
+        listaDeTareas={listaDeTareas}
+        eliminarTarea={eliminarTarea}
+        cambiarEstadoTarea={cambiarEstadoTarea}
+      />
     </div>
   );
 }
