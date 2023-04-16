@@ -2,6 +2,7 @@ import Task from "./Task";
 
 const TaskList = (props) => {
   const { listaDeTareas } = props;
+
   return (
     <ul>
       {listaDeTareas.map((tarea) => (
