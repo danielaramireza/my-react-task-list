@@ -1,0 +1,42 @@
+.contenedorSobreNosotros {
+  background-color: white;
+  display: flex;
+}
+
+.contenedorDescripcion {
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 80vh;
+}
+.contenedorDescripcion p {
+  margin-top: 40px;
+  color: negro;
+  font-family: inherit;
+  text-align: justify;
+}
+
+.contenedorImagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.contenedorHome {
+  background-color: white;
+}
+
+h2 {
+  color: #175676;
+  text-align: center;
+}
+.contenedorDerechoHome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorDerechoHome img {
+  width: 600px;
+  height: 700px;
+}

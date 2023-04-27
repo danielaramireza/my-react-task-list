@@ -1,37 +1,23 @@
-import Header from "./components/Header";
-import TaskList from "./components/TaskList";
 import "./App.css";
-import { useEffect, useState } from "react";
-import Input from "./components/Input";
-import { useToDo } from "./hooks/useToDo";
+import "./Pages.css";
+
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import TareasPage from "./pages/TareasPage";
+import SobreNosotrosPage from "./pages/SobreNosotrosPage";
+import HomePage from "./pages/HomePage";
+import Menu from "./components/Menu";
 
 function App() {
-  const {
-    listaDeTareas,
-    agregarTarea,
-    eliminarTarea,
-    cambiarEstadoTarea,
-    actualizarTarea,
-  } = useToDo();
-
-  useEffect(() => {
-    localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
-  }, [listaDeTareas]);
-
   return (
     <>
-      <div className="App">
-        <Header titulo="ToDo App" />
-        <Input agregarTarea={agregarTarea} />
-      </div>
-      <div className="App">
-        <TaskList
-          listaDeTareas={listaDeTareas}
-          eliminarTarea={eliminarTarea}
-          cambiarEstadoTarea={cambiarEstadoTarea}
-          actualizarTarea={actualizarTarea}
-        />
-      </div>
+      <BrowserRouter>
+        <Menu />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="sobre-nosotros" element={<SobreNosotrosPage />} />
+          <Route path="tareas" element={<TareasPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
