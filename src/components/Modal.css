@@ -33,12 +33,59 @@
   border-radius: 10px;
 }
 
+.botonCerrarModal:hover,
+.botonCancelarModal:hover {
+  color: #e7494b;
+  background: white;
+  outline: 1px solid #e7494b;
+}
+
 .inputNombreTareaModal {
   width: 100%;
   height: 2rem;
   padding: 0px 8px;
   box-sizing: border-box;
-  margin-bottom: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
+}
+
+.modalBody textarea {
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-color: #ccc;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-family: inherit;
+}
+
+.modalBody form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.botonCancelarModal {
+  background: #e7494b;
+  color: white;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+.botonGuardarModal {
+  color: white;
+  background-color: #175676;
+  height: 2rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+.botonGuardarModal:hover {
+  background-color: white;
+  color: #175676;
+  outline: 1px solid #175676;
 }

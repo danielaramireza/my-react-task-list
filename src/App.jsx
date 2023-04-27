@@ -19,16 +19,20 @@ function App() {
   }, [listaDeTareas]);
 
   return (
-    <div className="App">
-      <Header titulo="ToDo App" />
-      <Input agregarTarea={agregarTarea} />
-      <TaskList
-        listaDeTareas={listaDeTareas}
-        eliminarTarea={eliminarTarea}
-        cambiarEstadoTarea={cambiarEstadoTarea}
-        actualizarTarea={actualizarTarea}
-      />
-    </div>
+    <>
+      <div className="App">
+        <Header titulo="ToDo App" />
+        <Input agregarTarea={agregarTarea} />
+      </div>
+      <div className="App">
+        <TaskList
+          listaDeTareas={listaDeTareas}
+          eliminarTarea={eliminarTarea}
+          cambiarEstadoTarea={cambiarEstadoTarea}
+          actualizarTarea={actualizarTarea}
+        />
+      </div>
+    </>
   );
 }
 

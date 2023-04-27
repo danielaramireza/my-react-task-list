@@ -17,10 +17,15 @@ export const useToDo = () => {
     return ultimoId + 1;
   }
 
-  function agregarTarea(nombreTarea) {
+  function agregarTarea(nombreTarea, descripcion = null) {
     setListaDeTareas([
       ...listaDeTareas,
-      { id: retornarUltimoId(), TaskName: nombreTarea, State: false },
+      {
+        id: retornarUltimoId(),
+        TaskName: nombreTarea,
+        descripcion: descripcion,
+        State: false,
+      },
     ]);
   }
 
@@ -39,10 +44,10 @@ export const useToDo = () => {
     setListaDeTareas(nuevaListaDeTareas);
   }
 
-  function actualizarTarea(id, name) {
+  function actualizarTarea(id, name, description = null) {
     const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
       if (tarea.id == id) {
-        return { ...tarea, TaskName: name };
+        return { ...tarea, TaskName: name, descripcion: description };
       }
       return tarea;
     });

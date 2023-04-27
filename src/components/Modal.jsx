@@ -1,15 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./Modal.css";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function Modal(props) {
-  const { cerrarModal, id, name, actualizarTarea } = props;
-  const [nuevoNombreTarea, setNuevoNombreTarea] = useState(name);
+  const { cerrarModal, id, name, description, actualizarTarea } = props;
 
-  function enviarActualizacionTarea(ev) {
-    ev.preventDefault();
-    actualizarTarea(id, nuevoNombreTarea);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    mode: "onChange",
+  });
+
+  function enviarActualizacionTarea(dataFormulario) {
+    actualizarTarea(id, dataFormulario.nombreTarea, dataFormulario.descripcion);
     cerrarModal();
   }
 
@@ -23,14 +30,30 @@ export default function Modal(props) {
           </button>
         </div>
         <div className="modalBody">
-          <form onSubmit={enviarActualizacionTarea}>
+          <form onSubmit={handleSubmit(enviarActualizacionTarea)}>
             <input
               className="inputNombreTareaModal"
               type="text"
               placeholder="Nuevo nombre de la tarea"
-              value={nuevoNombreTarea}
-              onChange={(ev) => setNuevoNombreTarea(ev.target.value)}
+              defaultValue={name}
+              {...register("nombreTarea", {
+                required: true,
+                minLength: {
+                  value: 3,
+                  message:
+                    "El nombre de la tarea debe tener mínimo 3 caracteres",
+                },
+              })}
             />
+            <span className="error" role="alert">
+              {errors.nombreTarea && errors.nombreTarea.message}
+            </span>
+            <textarea
+              rows="3"
+              placeholder="Agrega una descripción de tu tarea"
+              defaultValue={description}
+              {...register("descripcion")}
+            ></textarea>
           </form>
         </div>
         <div className="modalFooter">
@@ -39,7 +62,7 @@ export default function Modal(props) {
           </button>
           <button
             className="botonGuardarModal"
-            onClick={enviarActualizacionTarea}
+            onClick={handleSubmit(enviarActualizacionTarea)}
           >
             Guardar
           </button>

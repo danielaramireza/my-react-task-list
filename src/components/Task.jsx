@@ -7,6 +7,7 @@ const Task = (props) => {
   const {
     id,
     name,
+    description,
     state,
     eliminarTarea,
     cambiarEstadoTarea,
@@ -41,7 +42,10 @@ const Task = (props) => {
             checked={estadoTarea}
             onChange={(ev) => setEstadoTarea(ev.target.checked)}
           ></input>
-          <p className={claseDelEstado}>{name}</p>
+          <div className="informacionTarea">
+            <p className={claseDelEstado}>{name}</p>
+            <small>{description}</small>
+          </div>
         </div>
         <div className="task-right">
           <button
@@ -66,6 +70,7 @@ const Task = (props) => {
           cerrarModal={cerrarModal}
           id={id}
           name={name}
+          description={description}
           actualizarTarea={actualizarTarea}
         />
       )}

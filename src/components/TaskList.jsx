@@ -11,6 +11,7 @@ const TaskList = (props) => {
           key={tarea.id}
           id={tarea.id}
           name={tarea.TaskName}
+          description={tarea.descripcion}
           state={tarea.State}
           eliminarTarea={eliminarTarea}
           cambiarEstadoTarea={cambiarEstadoTarea}

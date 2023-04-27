@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function Input(props) {
@@ -16,7 +13,7 @@ export default function Input(props) {
   });
 
   function enviarTarea(dataFormulario) {
-    agregarTarea(dataFormulario.nombreTarea);
+    agregarTarea(dataFormulario.nombreTarea, dataFormulario.descripcion);
     reset();
   }
   return (
@@ -27,19 +24,23 @@ export default function Input(props) {
           type="text"
           placeholder="Agregar nueva tarea"
           {...register("nombreTarea", {
+            required: true,
             minLength: {
               value: 3,
-              message: "El nombre de la tarea debe ser mayor a 3 caracteres",
+              message: "El nombre de la tarea debe tener mínimo 3 caracteres",
             },
           })}
         />
         <span className="error" role="alert">
           {errors.nombreTarea && errors.nombreTarea.message}
         </span>
+        <textarea
+          rows="3"
+          placeholder="Agrega una descripción de tu tarea"
+          {...register("descripcion")}
+        ></textarea>
       </div>
-      <button type="submit">
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
+      <button type="submit">Agregar tarea</button>
     </form>
   );
 }
