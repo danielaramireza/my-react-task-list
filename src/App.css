@@ -91,6 +91,7 @@ body {
   border-radius: 10px;
   border: 1px solid #ccc;
   padding-left: 8px;
+  box-sizing: border-box;
 }
 
 .formularioNuevaTarea button {
@@ -123,4 +124,13 @@ body {
   border: none;
   border-radius: 10px;
   padding: 0px 10px;
+}
+
+.error {
+  font-size: 12px;
+  color: #e7494b;
+}
+
+.contenedorNuevaTarea {
+  flex-grow: 1;
 }
