@@ -1,18 +1,5 @@
-.contenedorSobreNosotros {
-  background-color: white;
-  display: flex;
-}
-
-.contenedorDescripcion {
-  margin-left: 20px;
-  margin-right: 20px;
-  min-width: 80vh;
-}
-.contenedorDescripcion p {
-  margin-top: 40px;
-  color: negro;
-  font-family: inherit;
-  text-align: justify;
+.contenedorDescripcion h1 {
+  font-size: 2rem;
 }
 
 .contenedorImagen {
@@ -22,13 +9,14 @@
   margin-right: 20px;
 }
 
-.contenedorHome {
-  background-color: white;
-}
-
 h2 {
   color: #175676;
   text-align: center;
+}
+
+.contenedorIzquierdoHome h1 {
+  color: white;
+  font-size: 6rem;
 }
 .contenedorDerechoHome {
   display: flex;
@@ -36,7 +24,43 @@ h2 {
   align-items: center;
 }
 
-.contenedorDerechoHome img {
-  width: 600px;
-  height: 700px;
+.chakra-breadcrumb {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+
+.chakra-breadcrumb.lightNav {
+  color: white;
+}
+
+.TareasPage {
+  background: #48809b;
+  background-image: url(./assets/figuraFondo.svg);
+  background-repeat: no-repeat;
+  background-size: 150%;
+  background-position-x: 100%;
+  background-position-y: 50%;
+  min-height: 100vh;
+  padding-top: 62px;
+}
+
+@media screen and (max-width: 767px) {
+  .contenedorIzquierdoHome h1 {
+    font-size: 4rem;
+  }
+  .chakra-breadcrumb.darkNav {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .TareasPage {
+    padding: 62px 20px;
+    background-size: 210%;
+    background-position-x: 70%;
+    background-position-y: 42%;
+  }
 }

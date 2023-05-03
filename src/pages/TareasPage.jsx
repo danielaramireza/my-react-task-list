@@ -17,7 +17,7 @@ export default function TareasPage() {
     localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
   }, [listaDeTareas]);
   return (
-    <>
+    <div className="TareasPage">
       <div className="App">
         <Header titulo="TaskMate App" />
         <Input agregarTarea={agregarTarea} />
@@ -30,6 +30,6 @@ export default function TareasPage() {
           actualizarTarea={actualizarTarea}
         />
       </div>
-    </>
+    </div>
   );
 }

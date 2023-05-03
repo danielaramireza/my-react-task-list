@@ -12,7 +12,7 @@ button {
 
 .App {
   width: 100%;
-  max-width: 450px;
+  max-width: 600px;
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -24,6 +24,7 @@ button {
 .App h1 {
   text-align: center;
   margin-top: 0;
+  font-size: 1.75rem;
 }
 .task {
   background-color: #efefef;
@@ -48,6 +49,7 @@ button {
 .checkbox {
   width: 13px;
   height: 13px;
+  min-width: 13px;
   border-radius: 50%;
   vertical-align: middle;
   border: 1px solid #909090;
@@ -72,6 +74,10 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.task-left {
+  width: 85%;
 }
 
 .task button {
@@ -106,6 +112,7 @@ button {
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px;
+  border-width: 1px;
   border-color: #ccc;
   font-family: inherit;
   padding: 8px;
@@ -145,6 +152,10 @@ button {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.informacionTarea {
+  width: 100%;
 }
 
 .informacionTarea p {
