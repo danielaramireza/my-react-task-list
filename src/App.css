@@ -18,7 +18,15 @@ button {
   border-radius: 8px;
   padding: 3rem;
   margin-top: 10px;
+  /* background-color: white; */
+}
+
+.AppLight {
   background-color: white;
+}
+
+.AppDark {
+  background-color: rgb(26, 32, 44);
 }
 
 .App h1 {
@@ -27,7 +35,6 @@ button {
   font-size: 1.75rem;
 }
 .task {
-  background-color: #efefef;
   width: 100%;
   margin: 10px 0px;
   padding: 15px;
@@ -38,6 +45,18 @@ button {
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+}
+
+.taskLight {
+  background-color: #efefef;
+}
+
+.taskDark {
+  background-color: rgb(8 59 85);
+}
+
+.taskDark .task-edit-button {
+  color: white;
 }
 
 .App ul {
@@ -166,4 +185,12 @@ button {
 .informacionTarea small {
   font-style: italic;
   font-weight: 100;
+}
+
+.bgImageLigth {
+  background-image: url(./assets/figuraFondoBlanco.svg);
+}
+
+.bgImageDark {
+  background-image: url(./assets/figuraFondo.svg);
 }

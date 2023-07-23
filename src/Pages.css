@@ -33,19 +33,9 @@ h2 {
   font-size: 1.25rem;
 }
 
-.chakra-breadcrumb.lightNav {
-  color: white;
-}
-
-.TareasPage {
-  background: #48809b;
-  background-image: url(./assets/figuraFondo.svg);
-  background-repeat: no-repeat;
-  background-size: 150%;
-  background-position-x: 100%;
-  background-position-y: 50%;
-  min-height: 100vh;
-  padding-top: 62px;
+.chakra-breadcrumb a,
+.chakra-breadcrumb span[role="presentation"] {
+  /* color: white; */
 }
 
 @media screen and (max-width: 767px) {

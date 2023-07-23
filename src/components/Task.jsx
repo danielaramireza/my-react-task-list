@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
+import { useColorModeValue } from "@chakra-ui/react";
 
 const Task = (props) => {
   const {
@@ -28,13 +29,15 @@ const Task = (props) => {
     cambiarEstadoTarea(id, estadoTarea);
   }, [estadoTarea]);
 
+  const bgTask = useColorModeValue("taskLight", "taskDark");
+
   function cerrarModal() {
     setEstadoModal(false);
   }
 
   return (
     <li>
-      <div className="task">
+      <div className={`task ${bgTask}`}>
         <div className="task-left">
           <input
             className="checkbox"

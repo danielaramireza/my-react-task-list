@@ -3,11 +3,16 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Button,
   Avatar,
   Tooltip,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 function Menu() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const location = useLocation();
   console.log(location.pathname);
   let classNavBar;
@@ -40,6 +45,12 @@ function Menu() {
         <Tooltip label="Hola, Daniela" fontSize="md">
           <Avatar name="Dan Abrahmov" src="./assets/avatar.jpg" size="sm" />
         </Tooltip>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem>
+        <Button onClick={toggleColorMode}>
+          Modo {colorMode === "light" ? "Oscuro" : "Claro"}
+        </Button>
       </BreadcrumbItem>
     </Breadcrumb>
   );

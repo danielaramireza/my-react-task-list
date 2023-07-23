@@ -1,10 +1,15 @@
 import Header from "../components/Header";
-import { Box, Heading, Image } from "@chakra-ui/react";
+import { Box, Heading, Image, useColorModeValue } from "@chakra-ui/react";
 
 function HomePage() {
+  const backgroundColor = useColorModeValue(
+    "light.background",
+    "dark.background"
+  );
+
   return (
     <Box
-      bgColor="white"
+      bgColor={backgroundColor}
       minH="100vh"
       display={{ base: "flex", md: "grid" }}
       flexDirection="column"

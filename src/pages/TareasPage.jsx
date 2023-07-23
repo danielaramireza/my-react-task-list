@@ -3,8 +3,13 @@ import TaskList from "../components/TaskList";
 import { useEffect, useState } from "react";
 import Input from "../components/Input";
 import { useToDo } from "../hooks/useToDo";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 
 export default function TareasPage() {
+  const backgroundColor = useColorModeValue(
+    "light.background",
+    "dark.background"
+  );
   const {
     listaDeTareas,
     agregarTarea,
@@ -16,13 +21,24 @@ export default function TareasPage() {
   useEffect(() => {
     localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
   }, [listaDeTareas]);
+
+  const bgApp = useColorModeValue("AppLight", "AppDark");
   return (
-    <div className="TareasPage">
-      <div className="App">
+    <Box
+      className="TareasPage"
+      bgColor={backgroundColor}
+      bgImage="url(./assets/figuraFondo.svg)"
+      bgRepeat="no-repeat"
+      bgSize="150%"
+      bgPosition="100% 50%"
+      minH="100vh"
+      pt="62px"
+    >
+      <Box className={`App ${bgApp}`}>
         <Header titulo="TaskMate App" />
         <Input agregarTarea={agregarTarea} />
-      </div>
-      <div className="App">
+      </Box>
+      <div className={`App ${bgApp}`}>
         <TaskList
           listaDeTareas={listaDeTareas}
           eliminarTarea={eliminarTarea}
@@ -30,6 +46,6 @@ export default function TareasPage() {
           actualizarTarea={actualizarTarea}
         />
       </div>
-    </div>
+    </Box>
   );
 }
