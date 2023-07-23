@@ -1,11 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+let config = {
+  method: "get",
+  maxBodyLength: Infinity,
+  url: "http://localhost:3000/",
+  headers: {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWFyYWxAZ21haWwuY29tIiwibmFtZSI6IkRhbmllbGEiLCJpYXQiOjE2ODkxMTg3NDF9.kcWcXcICf_0eVYoblb4wVwvDhWBrJH_rrWKs8m3UHPo",
+  },
+};
 
 export const useToDo = () => {
-  const [listaDeTareas, setListaDeTareas] = useState(
-    localStorage.getItem("listaDeTareas")
-      ? JSON.parse(localStorage.getItem("listaDeTareas"))
-      : []
-  );
+  const [listaDeTareas, setListaDeTareas] = useState([]);
+
+  useEffect(() => {
+    axios(config)
+      .then((response) => {
+        if (response.data?.success === true) {
+          let res = response.data?.content.map((el) => {
+            return {
+              id: el.id,
+              TaskName: el.name,
+              descripcion: el.description,
+              State: el.isCompleted,
+            };
+          });
+          setListaDeTareas(res);
+        } else {
+          console.log("No se han podido recuperar las tareas");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   function retornarUltimoId() {
     const ultimoId = listaDeTareas.reduce((max, objeto) => {

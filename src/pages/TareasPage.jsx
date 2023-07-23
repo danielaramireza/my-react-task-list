@@ -5,6 +5,8 @@ import Input from "../components/Input";
 import { useToDo } from "../hooks/useToDo";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
+// consultarTareas();
+
 export default function TareasPage() {
   const backgroundColor = useColorModeValue(
     "light.background",

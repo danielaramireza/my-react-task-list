@@ -33,11 +33,6 @@ h2 {
   font-size: 1.25rem;
 }
 
-.chakra-breadcrumb a,
-.chakra-breadcrumb span[role="presentation"] {
-  /* color: white; */
-}
-
 @media screen and (max-width: 767px) {
   .contenedorIzquierdoHome h1 {
     font-size: 4rem;
