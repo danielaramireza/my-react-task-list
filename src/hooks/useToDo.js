@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-let config = {
+let baseURL = "http://localhost:3000/";
+let auth = {
+  "Content-Type": "application/json",
+  Authorization:
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWFyYWxAZ21haWwuY29tIiwibmFtZSI6IkRhbmllbGEiLCJpYXQiOjE2ODkxMTg3NDF9.kcWcXcICf_0eVYoblb4wVwvDhWBrJH_rrWKs8m3UHPo",
+};
+
+let getAllTasks = {
   method: "get",
   maxBodyLength: Infinity,
-  url: "http://localhost:3000/",
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWFyYWxAZ21haWwuY29tIiwibmFtZSI6IkRhbmllbGEiLCJpYXQiOjE2ODkxMTg3NDF9.kcWcXcICf_0eVYoblb4wVwvDhWBrJH_rrWKs8m3UHPo",
-  },
+  url: baseURL,
+  headers: auth,
 };
 
 export const useToDo = () => {
   const [listaDeTareas, setListaDeTareas] = useState([]);
 
   useEffect(() => {
-    axios(config)
+    axios(getAllTasks)
       .then((response) => {
         if (response.data?.success === true) {
           let res = response.data?.content.map((el) => {
@@ -47,20 +51,43 @@ export const useToDo = () => {
   }
 
   function agregarTarea(nombreTarea, descripcion = null) {
-    setListaDeTareas([
-      ...listaDeTareas,
-      {
-        id: retornarUltimoId(),
-        TaskName: nombreTarea,
-        descripcion: descripcion,
-        State: false,
-      },
-    ]);
+    axios({
+      method: "post",
+      maxBodyLength: Infinity,
+      url: baseURL + "tarea/nueva",
+      headers: auth,
+      data: JSON.stringify({
+        name: nombreTarea,
+      }),
+    }).then((res) => {
+      if (res.data?.success === true) {
+        setListaDeTareas([
+          ...listaDeTareas,
+          {
+            id: retornarUltimoId(),
+            TaskName: nombreTarea,
+            descripcion: descripcion,
+            State: false,
+          },
+        ]);
+      }
+    });
   }
 
   function eliminarTarea(id) {
-    const nuevaListaDeTareas = listaDeTareas.filter((tarea) => tarea.id != id);
-    setListaDeTareas(nuevaListaDeTareas);
+    axios({
+      method: "delete",
+      maxBodyLength: Infinity,
+      url: baseURL + "tarea/eliminar/" + id,
+      headers: auth,
+    }).then((res) => {
+      if (res.data?.success === true) {
+        const nuevaListaDeTareas = listaDeTareas.filter(
+          (tarea) => tarea.id != id
+        );
+        setListaDeTareas(nuevaListaDeTareas);
+      }
+    });
   }
 
   function cambiarEstadoTarea(id, estadoTarea) {
