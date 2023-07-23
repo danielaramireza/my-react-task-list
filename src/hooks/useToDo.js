@@ -58,6 +58,7 @@ export const useToDo = () => {
       headers: auth,
       data: JSON.stringify({
         name: nombreTarea,
+        description: descripcion,
       }),
     }).then((res) => {
       if (res.data?.success === true) {
