@@ -91,23 +91,50 @@ export const useToDo = () => {
   }
 
   function cambiarEstadoTarea(id, estadoTarea) {
-    const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
-      if (tarea.id == id) {
-        return { ...tarea, State: estadoTarea };
-      }
-      return tarea;
-    });
-    setListaDeTareas(nuevaListaDeTareas);
+    axios({
+      method: "put",
+      maxBodyLength: Infinity,
+      url: baseURL + "tarea/actualizar/" + id,
+      headers: auth,
+      data: JSON.stringify({
+        isCompleted: estadoTarea,
+      }),
+    })
+      .then((res) => {
+        if (res.data?.success === true) {
+          const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
+            if (tarea.id == id) {
+              return { ...tarea, State: estadoTarea };
+            }
+            return tarea;
+          });
+          setListaDeTareas(nuevaListaDeTareas);
+        }
+      })
+      .catch(() => {});
   }
 
   function actualizarTarea(id, name, description = null) {
-    const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
-      if (tarea.id == id) {
-        return { ...tarea, TaskName: name, descripcion: description };
+    axios({
+      method: "put",
+      maxBodyLength: Infinity,
+      url: baseURL + "tarea/actualizar/" + id,
+      headers: auth,
+      data: JSON.stringify({
+        name: name,
+        description: description,
+      }),
+    }).then((res) => {
+      if (res.data?.success === true) {
+        const nuevaListaDeTareas = listaDeTareas.map((tarea) => {
+          if (tarea.id == id) {
+            return { ...tarea, TaskName: name, descripcion: description };
+          }
+          return tarea;
+        });
+        setListaDeTareas(nuevaListaDeTareas);
       }
-      return tarea;
     });
-    setListaDeTareas(nuevaListaDeTareas);
   }
 
   return {

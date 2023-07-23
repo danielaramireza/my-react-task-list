@@ -18,6 +18,7 @@ const Task = (props) => {
   const [estadoTarea, setEstadoTarea] = useState(state);
   const [claseDelEstado, setClaseDelEstado] = useState();
   const [estadoModal, setEstadoModal] = useState(false);
+  const [userInteraction, setUserInteraction] = useState(false);
 
   useEffect(() => {
     if (estadoTarea == true) {
@@ -25,8 +26,9 @@ const Task = (props) => {
     } else {
       setClaseDelEstado("");
     }
-
-    cambiarEstadoTarea(id, estadoTarea);
+    if (userInteraction) {
+      cambiarEstadoTarea(id, estadoTarea);
+    }
   }, [estadoTarea]);
 
   const bgTask = useColorModeValue("taskLight", "taskDark");
@@ -34,6 +36,11 @@ const Task = (props) => {
   function cerrarModal() {
     setEstadoModal(false);
   }
+
+  const handleChange = (ev) => {
+    setUserInteraction(true); // Indicar que el cambio es del usuario
+    setEstadoTarea(ev.target.checked);
+  };
 
   return (
     <li>
@@ -43,7 +50,7 @@ const Task = (props) => {
             className="checkbox"
             type="checkbox"
             checked={estadoTarea}
-            onChange={(ev) => setEstadoTarea(ev.target.checked)}
+            onChange={handleChange}
           ></input>
           <div className="informacionTarea">
             <p className={claseDelEstado}>{name}</p>
