@@ -20,9 +20,9 @@ export default function TareasPage() {
     actualizarTarea,
   } = useToDo();
 
-  useEffect(() => {
-    localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
-  }, [listaDeTareas]);
+  // useEffect(() => {
+  //   localStorage.setItem("listaDeTareas", JSON.stringify(listaDeTareas));
+  // }, [listaDeTareas]);
 
   const bgApp = useColorModeValue("AppLight", "AppDark");
   return (

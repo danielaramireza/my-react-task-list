@@ -30,6 +30,8 @@ export const useToDo = () => {
               State: el.isCompleted,
             };
           });
+          console.log(res);
+          console.log(response.data);
           setListaDeTareas(res);
         } else {
           console.log("No se han podido recuperar las tareas");
